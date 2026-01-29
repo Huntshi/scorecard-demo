@@ -6,17 +6,18 @@ on:
   schedule:
     - cron: '0 6 * * 1' # Chaque lundi à 6h
 
-permissions: read-all
+permissions: {} # Désactiver par defaut
 
 jobs:
   analysis:
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       security-events: write
       id-token: write
     steps:
       - name: Checkout du repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           persist-credentilas: false
 
